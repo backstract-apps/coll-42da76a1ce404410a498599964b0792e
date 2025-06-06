@@ -101,18 +101,18 @@ def setup_telemetry_and_logging():
     # Configure standard logging to use Loguru
     logging.basicConfig(handlers=[InterceptHandler()], level=logging.INFO)
 
-    # Loki settings
-    # Update if needed
-    LOKI_URL = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
-    LOKI_LABELS = {"app": "fastapi-app"}  # Optional labels
+    # # Loki settings
+    # # Update if needed
+    # LOKI_URL = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
+    # LOKI_LABELS = {"app": "fastapi-app"}  # Optional labels
 
-    # Configure Loguru to send logs to Loki
-    loki_handler = logging_loki.LokiQueueHandler(
-        Queue(-1),
-        url=LOKI_URL,
-        tags=LOKI_LABELS,
-        # auth=("username", "password"),
-        version="1"
-    )
+    # # Configure Loguru to send logs to Loki
+    # loki_handler = logging_loki.LokiQueueHandler(
+    #     Queue(-1),
+    #     url=LOKI_URL,
+    #     tags=LOKI_LABELS,
+    #     # auth=("username", "password"),
+    #     version="1"
+    # )
 
-    logger.add(loki_handler, level="INFO")  # Adjust log level as needed
+    # logger.add(loki_handler, level="INFO")  # Adjust log level as needed
